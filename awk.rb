@@ -3,8 +3,8 @@ require 'formula'
 class Awk < Formula
   homepage 'http://www.cs.princeton.edu/~bwk/btl.mirror/'
   url 'http://www.cs.princeton.edu/~bwk/btl.mirror/awk.tar.gz'
-  md5 'a7062ecade93dc4cb39190e48db9a51d'
   version '20110810'
+  sha1 '333d93c746aa16e33c5c4aaf505009914cea4770'
 
   def install
     ENV.O3 # Docs recommend higher optimization

@@ -3,23 +3,21 @@ require 'formula'
 class Tk < Formula
   homepage 'http://www.tcl.tk/'
   url 'http://sourceforge.net/projects/tcl/files/Tcl/8.5.9/tk8.5.9-src.tar.gz'
-  md5 '7cdeb9feb61593f58a0ae61f2497580e'
   version '8.5.9'
+  sha1 '161a133e0b653d5fdf6fcff47bdbf768d73f3238'
 
   # must use a Homebrew-built Tcl since versions must match
   depends_on 'tcl'
 
-  def options
-    [['--enable-threads', 'Build with multithreading support'],
-     ['--enable-aqua', 'Build with Aqua support']]
-  end
+  option 'enable-threads', 'Build with multithreading support'
+  option 'enable-aqua', 'Build with Aqua support'
 
   def install
     args = ["--prefix=#{prefix}",
             "--mandir=#{man}",
             "--with-tcl=#{HOMEBREW_PREFIX}/lib"]
-    args << "--enable-threads" if ARGV.include? "--enable-threads"
-    args << "--enable-aqua" if ARGV.include? "--enable-aqua"
+    args << "--enable-threads" if build.include? "enable-threads"
+    args << "--enable-aqua" if build.include? "enable-aqua"
     args << "--enable-64bit" if MacOS.prefer_64_bit?
 
     cd 'unix' do

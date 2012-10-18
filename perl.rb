@@ -3,11 +3,9 @@ require 'formula'
 class Perl < Formula
   homepage 'http://www.perl.org/'
   url 'http://www.cpan.org/src/5.0/perl-5.14.2.tar.gz'
-  md5 '3306fbaf976dcebdcd49b2ac0be00eb9'
+  sha1 'df1549d65cdef2b20023af83ecaa2a024109a5ad'
 
-  def options
-    [['--use-threads', 'Enable perl threads']]
-  end
+  option 'use-threads', 'Enable Perl threads'
 
   def install
     system("rm -f config.sh Policy.sh")
@@ -20,7 +18,7 @@ class Perl < Formula
         '-Duselargefiles',
     ]
 
-    args << '-Dusethreads' if ARGV.include? '--use-threads'
+    args << '-Dusethreads' if build.include? 'use-threads'
 
     system './Configure', *args
     system "make"
@@ -29,7 +27,7 @@ class Perl < Formula
   end
 
   def caveats
-    unless ARGV.include? '--use-threads' then <<-EOS.undent
+    unless build.include? 'use-threads' then <<-EOS.undent
       Builds without threads by default. Use --use-threads to build with threads.
       EOS
     end

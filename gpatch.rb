@@ -2,10 +2,9 @@ require 'formula'
 
 class Gpatch < Formula
   homepage 'http://savannah.gnu.org/projects/patch/'
-  # Use a slightly newer version with build fixes
-  url 'http://alpha.gnu.org/gnu/patch/patch-2.6.1.136-31a7.tar.gz'
-  md5 '80975a976d9adbcacb61fe6b002c559d'
-  version '2.6.1'
+  url 'http://ftpmirror.gnu.org/patch/patch-2.7.tar.bz2'
+  mirror 'http://ftp.gnu.org/gnu/patch/patch-2.7.tar.bz2'
+  sha1 '3a08bb3a6f3a5f3a03cbb3bfa052528a1a259ec8'
 
   def install
     system "./configure", "--disable-dependency-tracking", "--prefix=#{prefix}"

@@ -4,8 +4,8 @@ class Vim < Formula
   homepage 'http://www.vim.org/'
   # Get stable versions from hg repo instead of downloading an increasing
   # number of separate patches.
-  url 'https://vim.googlecode.com/hg/', :tag => 'v7-3-548'
-  version '7.3.548'
+  url 'https://vim.googlecode.com/hg/', :tag => 'v7-3-691'
+  version '7.3.691'
 
   head 'https://vim.googlecode.com/hg/'
 
@@ -29,7 +29,6 @@ class Vim < Formula
                           "--enable-pythoninterp",
                           "--enable-rubyinterp",
                           "--enable-cscope",
-                          "--with-ruby-command=/usr/bin/ruby",
                           "--with-features=huge"
     system "make"
 

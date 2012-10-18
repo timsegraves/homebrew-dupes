@@ -3,7 +3,7 @@ require 'formula'
 class Lapack < Formula
   homepage 'http://www.netlib.org/lapack/'
   url 'http://www.netlib.org/lapack/lapack-3.4.0.tgz'
-  md5 '02d5706ec03ba885fc246e5fa10d8c70'
+  sha1 '910109a931524f8dcc2734ce23fe927b00ca199f'
 
   keg_only :provided_by_osx
 

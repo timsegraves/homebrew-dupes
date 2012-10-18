@@ -3,7 +3,10 @@ require 'formula'
 class Tidy < Formula
   homepage 'http://tidy.sourceforge.net/'
   url 'ftp://mirror.internode.on.net/pub/gentoo/distfiles/tidy-20090325.tar.bz2'
-  md5 '39a05125a2a2dbacaccac84af64e1dbc'
+  sha1 '28c000a2cd40262fc0d7c2c429eb2a09b2df7bf4'
+
+  depends_on :automake
+  depends_on :libtool
 
   def install
     system 'sh', 'build/gnuauto/setup.sh'

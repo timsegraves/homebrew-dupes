@@ -3,9 +3,9 @@ require 'formula'
 class Rsync < Formula
   homepage 'http://rsync.samba.org/'
   url 'http://rsync.samba.org/ftp/rsync/src/rsync-3.0.9.tar.gz'
-  md5 '5ee72266fe2c1822333c407e1761b92b'
+  sha1 'c64c8341984aea647506eb504496999fd968ddfc'
 
-  depends_on 'autoconf' => :build if MacOS.xcode_version.to_f >= 4.3
+  depends_on :autoconf
 
   def patches
     %W[

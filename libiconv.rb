@@ -4,9 +4,11 @@ class Libiconv < Formula
   homepage 'http://www.gnu.org/software/libiconv/'
   url 'http://ftpmirror.gnu.org/libiconv/libiconv-1.14.tar.gz'
   mirror 'http://ftp.gnu.org/gnu/libiconv/libiconv-1.14.tar.gz'
-  md5 'e34509b1623cec449dfeb73d7ce9c6c6'
+  sha1 'be7d67e50d72ff067b2c0291311bc283add36965'
 
   keg_only :provided_by_osx
+
+  option :universal
 
   def patches
     { :p1 => [
@@ -16,18 +18,14 @@ class Libiconv < Formula
     ]}
   end
 
-  def options
-    [[ '--universal', 'Build a universal library.']]
-  end
-
   def install
-    ENV.universal_binary if ARGV.build_universal?
+    ENV.universal_binary if build.universal?
     ENV.j1
     system "./configure", "--disable-debug",
                           "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
                           "--enable-extra-encodings"
-    system "make -f Makefile.devel"
+    system "make", "-f", "Makefile.devel", "CFLAGS=#{ENV.cflags}", "CC=#{ENV.cc}"
     system "make install"
   end
 end

@@ -4,7 +4,7 @@ class Gperf < Formula
   homepage 'http://www.gnu.org/software/gperf'
   url 'http://ftpmirror.gnu.org/gperf/gperf-3.0.4.tar.gz'
   mirror 'http://ftp.gnu.org/pub/gnu/gperf/gperf-3.0.4.tar.gz'
-  md5 'c1f1db32fb6598d6a93e6e88796a8632'
+  sha1 'e32d4aff8f0c730c9a56554377b2c6d82d0951b8'
 
   keg_only "Xcode (up to and including 4.3) provides (a rather old) Gperf."
 

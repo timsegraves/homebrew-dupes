@@ -15,20 +15,13 @@ end
 
 class AppleGcc42 < Formula
   homepage 'http://r.research.att.com/tools/'
-  url 'http://r.research.att.com/tools/gcc-42-5666.3-darwin11.pkg'
-  md5 '3ccf46da27aaba17706b420711fb997e'
+  url 'http://r.research.att.com/tools/gcc-42-5666.3-darwin11.pkg',
+    :using => PkgDownloadStrategy
   version '4.2.1-5666.3'
-
-
-  def download_strategy
-    PkgDownloadStrategy
-  end
-
-  # Don't strip compiler binaries.
-  skip_clean :all
+  sha1 '8fadde2a159082d6474fe9e325b6301e3c0bc84f'
 
   def install
-    unless MacOS.lion?
+    unless MacOS.version >= :lion
       onoe <<-EOS.undent
         The compilers provided by this formula are designed for use on systems
         running OS X 10.7.
