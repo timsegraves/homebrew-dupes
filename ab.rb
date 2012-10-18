@@ -2,24 +2,13 @@ require 'formula'
 
 class Ab < Formula
   homepage 'http://httpd.apache.org/docs/trunk/programs/ab.html'
-  url 'http://archive.apache.org/dist/httpd/httpd-2.4.2.tar.bz2'
-  sha1 '8d391db515edfb6623c0c7c6ce5c1b2e1f7c64c2'
+  url 'http://archive.apache.org/dist/httpd/httpd-2.4.3.tar.bz2'
+  sha1 '0ef1281bb758add937efe61c345287be2f27f662'
+
+  depends_on 'libtool'
 
   def patches
-      {
-      # The ab tool of the latest stable httpd (2.4.2) does not work
-      # properly on systems that have both IPv4 and IPv6, i.e. OS X machines
-      # running Lion or later. In particular, the patch that added the `-B'
-      # option to bind to a local address disables connections to IPv4 hosts:
-      # "bind: Address family not supported by protocol family (47)"
-      # This issue has been fixed in SVN revision 1351737, but a
-      # packaged version with this fix is not yet available.
-      # Therefore, we download version 2.4.2 and patch it.
-      # As soon as the next version of httpd is released, presumably version
-      # 2.4.3, this will no longer be necessary.
-      :p3 => 'http://svn.apache.org/viewvc/httpd/httpd/trunk/support/ab.c?r1=1351737&r2=1351736&pathrev=1351737&view=patch',
-      # Disable requirement for PCRE, because "ab" does not use it
-      :p1 => DATA }
+      { :p1 => DATA } # Disable requirement for PCRE ("ab" does not need that)
   end
 
   def install
@@ -47,7 +36,7 @@ diff --git a/configure b/configure
 index 5f4c09f..84d3de2 100755
 --- a/configure
 +++ b/configure
-@@ -6037,8 +6037,6 @@ $as_echo "$as_me: Using external PCRE library from $PCRE_CONFIG" >&6;}
+@@ -6130,8 +6130,6 @@ $as_echo "$as_me: Using external PCRE library from $PCRE_CONFIG" >&6;}
      done
    fi
  
